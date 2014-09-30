@@ -1,0 +1,40 @@
+{
+  "name": "sms-service",
+  "version": "1.0.0",
+  "description": "Rest Service for Octoblu SMS messages",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/octoblu/sms-service.git"
+  },
+  "keywords": [
+    "sms",
+    "IOT",
+    "octoblu"
+  ],
+  "author": "Octoblu Inc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/octoblu/sms-service/issues"
+  },
+  "homepage": "https://github.com/octoblu/sms-service",
+  "dependencies": {
+    "body": "^4.5.0",
+    "body-parser": "^1.9.0",
+    "error-handler": "^1.0.0",
+    "errorhandler": "^1.2.0",
+    "express": "^4.9.5",
+    "express-session": "^1.8.2",
+    "gulp": "^3.8.8",
+    "lodash": "^2.4.1",
+    "method-override": "^2.2.0",
+    "morgan": "^1.3.2",
+    "multer": "^0.1.4",
+    "rest": "^1.2.0",
+    "skynet": "^1.1.1",
+    "when": "^3.4.6"
+  }
+}
