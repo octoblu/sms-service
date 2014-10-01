@@ -10,7 +10,7 @@ var SendSMSController = function(){
   self.sendSMSMessage = function(req, res){
     client({
       method: 'POST',
-      path: 'https://api.plivo.com/v1/Account/' + config.plivo.authId + '/Message',
+      path: 'https://api.plivo.com/v1/Account/' + config.plivo.authId + '/Message/',
       entity : {
         src : config.plivo.srcNumber,
         dst : req.body.dst,
@@ -19,9 +19,9 @@ var SendSMSController = function(){
     }).then(function (result) {
       res.send(result.entity);
     })
-      .catch(function (errorResult) {
+    .catch(function (errorResult) {
         res.send(errorResult.status.code, 'Error Sending SMS Message!');
-      });
+    });
   };
   self.getSMSMessage = function(req, res, next){
     client({
