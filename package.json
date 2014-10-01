@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/octoblu/sms-service",
   "dependencies": {
+    "basic-auth": "^1.0.0",
     "body": "^4.5.0",
     "body-parser": "^1.9.0",
     "error-handler": "^1.0.0",
@@ -33,9 +34,7 @@
     "method-override": "^2.2.0",
     "morgan": "^1.3.2",
     "multer": "^0.1.4",
-    "request": "^2.44.0",
     "rest": "^1.2.0",
-    "skynet": "^1.1.1",
     "when": "^3.4.6"
   }
 }

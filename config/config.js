@@ -1,7 +1,8 @@
 var smsConfig = {
   plivo : {
     authId : process.env.PLIVO_AUTH_UUID,
-    authToken : process.env.PLIVO_AUTH_TOKEN
+    authToken : process.env.PLIVO_AUTH_TOKEN,
+    srcNumber : '14805001499'
   },
   meshblu : {
     server : process.env.MESHBLU_SERVER || 'https://meshblu.octoblu.com',
