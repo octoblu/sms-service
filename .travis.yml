@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- '0.10'
+cache:
+  bundler: true
+  directories:
+  - node_modules
+env: NODE_ENV=test
+branches:
+  only:
+  - master
+deploy:
+  provider: opsworks
+  access_key_id: AKIAIT4X4NDGM2WVL6VA
+  secret_access_key:
+    secure: D53i6iJ2HilAdjn26eW3zjjIvuOBmwUib9ajHxwFnDQP6VH5zL890GZ/kH9RUzdUkQHpHuhOX6pPGLfKj/BnHjE6kxUMzr/BsuLYoMWR9IovpX5EFMcWLBgRHQJ5uZ9nfThvb7upt9X10GRFpJHkFoJ1/jQAYqYk0UUIS5fOy14=
+  app-id: f3c30ce3-ee20-4604-b257-eaf86d71a1ae
