@@ -21,7 +21,7 @@ module.exports =  {
           token : meshbluUser.pass
         }
       }).then(function (result) {
-        next(null, result.entity);
+        next();
       })
         .catch(function (errorResult) {
           next('There was an error authenticating with Meshblu');
