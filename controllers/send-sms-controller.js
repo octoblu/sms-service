@@ -1,9 +1,4 @@
-var rest = require('rest');
-var mime = require('rest/interceptor/mime');
-var errorCode = require('rest/interceptor/errorCode');
-var basicAuth = require('rest/interceptor/basicAuth');
 var config = require('../config/config');
-var client = rest.wrap(mime).wrap(errorCode).wrap(basicAuth, {username: config.plivo.authId, password: config.plivo.authToken});
 var request = require('request');
 
 var SendSMSController = function () {
