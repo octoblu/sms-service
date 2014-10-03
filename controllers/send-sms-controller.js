@@ -9,46 +9,41 @@ var request = require('request');
 var SendSMSController = function () {
   var self = this;
   self.sendSMSMessage = function (req, res) {
+
     request({
       headers: {
         'Accept': 'application/json',
-        'User-Agent': 'Octoblu',
-        'x-li-format': 'json'
+        'User-Agent': 'Octoblu'
       },
-      json : {src : config.plivo.srcNumber, dst : req.body.dst, text : req.body.text},
+      json: {src: config.plivo.srcNumber, dst: req.body.dst, text: req.body.text},
       uri: 'https://' + config.plivo.authId + ':' + config.plivo.authToken + '@api.plivo.com/v1/Account/' + config.plivo.authId + '/Message/',
       method: 'POST',
       followAllRedirects: true
 
     }, function (error, response, body) {
-      var parsedBody;
       if (error) {
-        console.log(error);
-        res.send(500, error);
+        return res.send(500);
       }
-
-      try {
-        parsedBody = JSON.parse(body);
-        res.send(parsedBody);
-      } catch (err) {
-        res.send(200, body);
-      }
+      res.json(body);
     });
   };
+
   self.getSMSMessage = function (req, res, next) {
-    client({
-      method: 'POST',
-      path: 'https://' + config.plivo.authId + ':' + config.plivo.authToken + '@api.plivo.com/v1/Account/' + config.plivo.authId + '/Message/' + req.params.id,
-      params: {
-        uuid: uuid,
-        token: token
+
+    request({
+      headers: {
+        'Accept': 'application/json',
+        'User-Agent': 'Octoblu'
+      },
+      uri: 'https://' + config.plivo.authId + ':' + config.plivo.authToken + '@api.plivo.com/v1/Account/' + config.plivo.authId + '/Message/' + req.params.id,
+      followAllRedirects: true
+
+    }, function (error, response, body) {
+      if (error) {
+        return res.send(500);
       }
-    }).then(function (result) {
-      res.send(result.entity);
-    })
-      .catch(function (errorResult) {
-        res.send(errorResult.status.code, 'Error Sending SMS Message!');
-      });
+      res.json(body);
+    });
   };
   return self;
 };
