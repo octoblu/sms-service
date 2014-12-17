@@ -16,7 +16,7 @@
         <ul class="nav masthead-nav">
           <li><a href="/">Home</a></li>
           <li class="active"><a href="/api-documentation.html">API</a></li>
-          <li><a href="http://github.com/octoblu/weather-service">Source</a></li>
+          <li><a href="http://github.com/octoblu/sms-service">Source</a></li>
         </ul>
       </div>
     </div>
@@ -28,37 +28,40 @@
         <h1>API Documentation</h1>
         <hr>
 
-        <h4>Message</h4>
-
+        <h4>Send Message</h4>
         <p>
-          <strong>Send an email</strong>
+          <strong>Send an SMS</strong>
           <br>
-          Supports multiple recipients using an array
+          Supports multiple recipients using a delimiter  &OpenCurlyQuote;<&CloseCurlyQuote;
         </p>
 
         <h4>Request</h4>
-<pre>POST /messages</pre>
+        <pre>POST /message</pre>
+
 
         <h4>Body Parameters</h4>
         <p class="indented">
-          <strong>to</strong>
+          <strong>dst</strong>
           <em class="text-danger">required</em>
           <br>
           <span class="indented">string</span>
+          <p>
+             The destination numbers, The numbers should include valid telephone numbers with the country and area code.
+             e.g. 1602855255
+
+             For multiple numbers include the '<' delimiter.
+          </p>
         </p>
 
         <p class="indented">
-          <strong>subject</strong>
+          <strong>text</strong>
           <em class="text-danger">required</em>
           <br>
           <span class="indented">string</span>
-        </p>
-
-        <p class="indented">
-          <strong>body</strong>
-          <em class="text-danger">required</em>
-          <br>
-          <span class="indented">string</span>
+          <p>
+            The contents of the SMS message. If the contents are greater than 160 characters, they will be broken up into
+          multiple messages.
+          </p>
         </p>
 
         <h4>Response</h4>
@@ -67,11 +70,40 @@
             Status: 200 OK
           </div>
           <div class="panel-body">
-<pre></pre>
+        <pre></pre>
           </div>
         </div>
-
         <br>
+          <h4>Get Message</h4>
+
+          <p>
+              <strong>Find an SMS</strong>
+              <br>
+              Find a message with a given message ID
+          </p>
+
+          <h4>Request</h4>
+          <pre>POST /message/:id</pre>
+
+          <h4>URL Parameters</h4>
+          <p class="indented">
+              <strong>id</strong>
+              <em class="text-danger">required</em>
+              <br>
+              <span class="indented">string</span>
+          </p>
+          <h4>Response</h4>
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  Status: 200 OK
+              </div>
+              <div class="panel-body">
+                  <pre></pre>
+              </div>
+          </div>
+
+          <br>
+
       </div>
     </div>
   </div>

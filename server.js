@@ -1,20 +1,14 @@
 var express = require('express'),
-  http = require('http'),
-  https = require('https'),
   path = require('path'),
   config = require('./config/config'),
   morgan = require('morgan'),
-  methodOverride = require('method-override'),
-  session = require('express-session'),
   bodyParser = require('body-parser'),
   errorHandler = require('errorhandler');
 
 app = express();
 app.set('port', process.env.SMS_PORT || process.env.PORT || 9009);
 app.use(bodyParser.json());
-app.use(session({resave: true, saveUninitialized: true, secret: 'sqrt0fSaturn'}));
 app.use(morgan('combined'));
-app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(errorHandler());
 

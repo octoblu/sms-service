@@ -5,8 +5,7 @@ var smsConfig = {
     srcNumber : '18583650671'
   },
   meshblu : {
-    server : process.env.MESHBLU_SERVER || 'https://meshblu.octoblu.com',
-    port : process.env.MESHBLU_PORT || '443'
+    server : process.env.MESHBLU_SERVER || 'http://meshblu.octoblu.com'
   }
 };
 
