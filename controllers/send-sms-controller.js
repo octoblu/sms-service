@@ -10,7 +10,7 @@ var SendSMSController = function () {
         'Accept': 'application/json',
         'User-Agent': 'Octoblu'
       },
-      json: {src: config.plivo.srcNumber, dst: req.body.dst, text: req.body.text},
+      json: {src: config.plivo.srcNumber, dst: req.body.dst, text: req.body.text.toString()},
       uri: 'https://' + config.plivo.authId + ':' + config.plivo.authToken + '@api.plivo.com/v1/Account/' + config.plivo.authId + '/Message/',
       method: 'POST',
       followAllRedirects: true
