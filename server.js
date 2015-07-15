@@ -8,17 +8,28 @@ var express = require('express'),
 app = express();
 app.set('port', process.env.SMS_PORT || process.env.PORT || 9009);
 app.use(bodyParser.json());
-app.use(morgan('combined'));
+app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(errorHandler());
 
-var meshbluAuth = require('./middleware/meshblu-auth');
+var meshbluAuth = require('express-meshblu-auth');
+app.use(meshbluAuth({
+  server: 'meshblu.octoblu.com',
+  port: 443,
+  protocol: 'https'
+}));
+
+var meshbluRatelimit = require('express-meshblu-ratelimit');
+app.use(meshbluRatelimit());
+
+var meshbluHealthcheck = require('express-meshblu-healthcheck');
+app.use(meshbluHealthcheck());
 
 var SendSMSController = require('./controllers/send-sms-controller');
 var sendSMSController = new SendSMSController(config);
 
-app.post('/message', meshbluAuth.authenticate,  sendSMSController.sendSMSMessage);
-app.get('/message/:id', meshbluAuth.authenticate,  sendSMSController.getSMSMessage);
+app.post('/message',  sendSMSController.sendSMSMessage);
+app.get('/message/:id',  sendSMSController.getSMSMessage);
 
 app.listen(app.get('port'), function() {
   console.log("Express server listening on port " + app.get('port'));
