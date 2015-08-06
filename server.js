@@ -6,7 +6,7 @@ var express = require('express'),
   errorHandler = require('errorhandler');
 
 app = express();
-app.set('port', process.env.SMS_PORT || process.env.PORT || 9009);
+app.set('port', process.env.SMS_PORT || process.env.PORT || 80);
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
