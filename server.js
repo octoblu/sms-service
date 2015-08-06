@@ -12,6 +12,9 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(errorHandler());
 
+var meshbluHealthcheck = require('express-meshblu-healthcheck');
+app.use(meshbluHealthcheck());
+
 var meshbluAuth = require('express-meshblu-auth');
 app.use(meshbluAuth({
   server: 'meshblu.octoblu.com',
@@ -21,9 +24,6 @@ app.use(meshbluAuth({
 
 var meshbluRatelimit = require('express-meshblu-ratelimit');
 app.use(meshbluRatelimit());
-
-var meshbluHealthcheck = require('express-meshblu-healthcheck');
-app.use(meshbluHealthcheck());
 
 var SendSMSController = require('./controllers/send-sms-controller');
 var sendSMSController = new SendSMSController(config);
