@@ -1,6 +1,6 @@
 {
   "name": "sms-service",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Rest Service for Octoblu SMS messages",
   "main": "server.js",
   "scripts": {},
