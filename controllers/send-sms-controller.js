@@ -17,7 +17,7 @@ var SendSMSController = function () {
 
     }, function (error, response, body) {
       if (error) {
-        return res.send(500);
+        return res.status(422).send(error.message);
       }
       res.json(body);
     });
