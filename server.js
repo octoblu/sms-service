@@ -8,7 +8,7 @@ var express = require('express'),
 app = express();
 app.set('port', process.env.SMS_PORT || process.env.PORT || 80);
 app.use(bodyParser.json());
-app.use(morgan('dev'));
+app.use(morgan('dev', { skip: function(req, res){ return res.statusCode < 400 }}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(errorHandler());
 
