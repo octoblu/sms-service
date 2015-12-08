@@ -1,6 +1,6 @@
 {
   "name": "sms-service",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Rest Service for Octoblu SMS messages",
   "main": "server.js",
   "scripts": {},
@@ -24,7 +24,7 @@
     "body-parser": "^1.9.0",
     "errorhandler": "^1.2.0",
     "express": "^4.9.5",
-    "express-meshblu-auth": "^1.4.0",
+    "express-meshblu-auth": "^1.6.4",
     "express-meshblu-healthcheck": "^1.0.1",
     "express-meshblu-ratelimit": "^1.0.3",
     "lodash": "^2.4.2",
