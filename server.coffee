@@ -32,7 +32,6 @@ class Server
     app.use bodyParser.json limit : '50mb'
     app.use (request, response, next) =>
       response.sendError = (error, code=500) =>
-        console.error error.stack
         code = error.code if _.isNumber error.code
         return response.sendStatus code unless error.message?
         return response.status(code).send error.message
