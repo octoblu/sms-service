@@ -10,4 +10,4 @@ COPY package.json /usr/src/app/
 RUN npm -s install --production
 COPY . /usr/src/app/
 
-CMD [ "node", "server.js" ]
+CMD [ "node", "command.js" ]

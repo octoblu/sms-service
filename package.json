@@ -1,6 +1,6 @@
 {
   "name": "sms-service",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Rest Service for Octoblu SMS messages",
   "main": "server.js",
   "scripts": {
@@ -24,6 +24,7 @@
   "dependencies": {
     "basic-auth": "^1.0.0",
     "body-parser": "^1.9.0",
+    "coffee-script": "^1.10.0",
     "colors": "^1.1.2",
     "errorhandler": "^1.2.0",
     "express": "^4.9.5",
