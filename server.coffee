@@ -4,6 +4,7 @@ path               = require 'path'
 morgan             = require 'morgan'
 bodyParser         = require 'body-parser'
 errorHandler       = require 'errorhandler'
+MeshbluConfig      = require 'meshblu-config'
 meshbluHealthcheck = require 'express-meshblu-healthcheck'
 meshbluAuth        = require 'express-meshblu-auth'
 meshbluRatelimit   = require 'express-meshblu-ratelimit'
@@ -21,19 +22,22 @@ class Server
     @server.address()
 
   run: (callback) =>
+    meshbluConfig = new MeshbluConfig
+    meshbluAuth = new MeshbluAuth meshbluConfig.toJSON()
     app = express()
     app.use meshbluHealthcheck()
     app.use morgan 'dev', immediate: false
     app.use errorHandler()
     app.use express.static path.join(__dirname, 'public')
-    app.use meshbluAuth()
+    app.use meshbluAuth.retrieve()
+    app.use meshbluAuth.gateway()
     app.use meshbluRatelimit()
     app.use bodyParser.urlencoded limit: '50mb', extended : true
     app.use bodyParser.json limit : '50mb'
     app.use (request, response, next) =>
       response.sendError = (error, code=500) =>
         code = error.code if _.isNumber error.code
-        return response.sendStatus code unless error.message?
+        return response.status(code).send(error: 'Unknown Error') unless error.message?
         return response.status(code).send error.message
       next()
 
