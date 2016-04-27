@@ -6,7 +6,7 @@ bodyParser         = require 'body-parser'
 errorHandler       = require 'errorhandler'
 MeshbluConfig      = require 'meshblu-config'
 meshbluHealthcheck = require 'express-meshblu-healthcheck'
-meshbluAuth        = require 'express-meshblu-auth'
+MeshbluAuth        = require 'express-meshblu-auth'
 meshbluRatelimit   = require 'express-meshblu-ratelimit'
 Router             = require './src/router'
 
