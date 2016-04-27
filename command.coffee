@@ -71,7 +71,6 @@ class Command
     return true unless options.plivo_source_number
     return false
 
-
   panic: (error) =>
     console.error colors.red error.message
     console.error error.stack
@@ -79,7 +78,6 @@ class Command
 
   run: =>
     {meshbluConfig, port, plivo_auth_id, plivo_auth_token, plivo_source_number} = @getOptions()
-
 
     server = new Server {meshbluConfig, port, plivo_auth_id, plivo_auth_token, plivo_source_number}
     server.run (error) =>

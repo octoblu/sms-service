@@ -1,5 +1,6 @@
 _       = require 'lodash'
 request = require 'request'
+debug = require('debug')('sms-service:messages-controller')
 
 class MessagesController
   constructor: (options) ->
@@ -9,6 +10,7 @@ class MessagesController
       throw new Error "plivo_auth_id, plivo_auth_token, and plivo_source_number are required: #{JSON.stringify options}"
 
   create: (req, res) =>
+    debug 'create request', req.body
     return res.sendError new Error('body text field is not a string'), 422 unless _.isString req.body?.text
 
     options =
@@ -27,7 +29,6 @@ class MessagesController
 
     request.post options, (error, response, body) =>
       return res.sendError error if error?
-      console.log JSON.stringify body
       return res.sendError new Error("Failed to send sms"), response.statusCode if response.statusCode >= 400
       return res.status(201).send body
 
