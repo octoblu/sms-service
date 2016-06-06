@@ -29,7 +29,7 @@ class Server
     app.use morgan 'dev', immediate: false
     app.use errorHandler()
     app.use express.static path.join(__dirname, 'public')
-    app.use meshbluAuth.retrieve()
+    app.use meshbluAuth.auth()
     app.use meshbluAuth.gateway()
     app.use meshbluRatelimit()
     app.use bodyParser.urlencoded limit: '50mb', extended : true
