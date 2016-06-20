@@ -11,7 +11,6 @@ class MessagesController
 
   create: (req, res) =>
     debug 'create request', req.body
-    return res.sendError new Error('body text field is not a string'), 422 unless _.isString req.body?.text
 
     options =
       uri: "https://api.plivo.com/v1/Account/#{@plivo_auth_id}/Message/"
@@ -25,7 +24,7 @@ class MessagesController
       json:
         src:  @plivo_source_number
         dst:  req.body.dst
-        text: req.body.text
+        text: "#{req.body.text}"
 
     request.post options, (error, response, body) =>
       return res.sendError error if error?
